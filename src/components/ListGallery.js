@@ -113,12 +113,17 @@ const handleAddToCart = (ev) => {
 const addToCart = (id) => {
     id = +id;
     let user = getUserInfo();
+    let picture = picturesArr.find(pic => pic.id === id);
     if (!user) {
+        return;
+    }
+    if (user.cart.find(indx => indx === id)) {
+        showToast(`Picture "${picture.title}" Is Already In Your Cart`, false);
         return;
     }
     user.cart = [...user.cart, id];
     localStorage.setItem("users", JSON.stringify(users));
-    showToast("Picture Added To Cart");
+    showToast(`Picture "${picture.title}" Added To Cart`);
     updateCartGallery();
 };
 
