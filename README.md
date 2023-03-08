@@ -14,7 +14,7 @@ As a user/admin you can add pictures to your cart.
 
 A toast will show when you:
 1. Successfully add a picture to your cart.
-2. Update your profile.
+..2. Update your profile.
 3. Try to add a picture to your cart that is already added to your cart (error toast in the color red).
 
 You can view your cart and remove pictures from your cart.
