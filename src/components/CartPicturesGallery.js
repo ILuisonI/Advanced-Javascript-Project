@@ -99,6 +99,11 @@ const createPicturesGallery = () => {
                 picture.imgURL);
         }
     }
+    if (!innerHTML) {
+        emptyCart.classList.remove("d-none");
+        cart.classList.add("d-none");
+        return;
+    }
     galleryDiv.innerHTML = innerHTML;
     createEventListener("pictureDeleteBtn", handleDeleteBtnClick);
     createEventListener("pictureEditBtn", handleEditBtnClick);
