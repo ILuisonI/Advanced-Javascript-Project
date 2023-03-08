@@ -3,68 +3,69 @@ import initialData from "/initialData.json" assert {type: "json"}
 
 let id = 1;
 let nextUserId = 1;
+let data = initialData.initialData;
 
 const createData = () => {
     let picturesArr = [
         new Picture(
             id++,
-            initialData.initialData[0].credit,
-            initialData.initialData[0].price,
-            initialData.initialData[0].title,
-            initialData.initialData[0].imgURL,
-            initialData.initialData[0].description,
-            initialData.initialData[0].subtitle,
-            initialData.initialData[0].createdAt
+            data[0].credit,
+            data[0].price,
+            data[0].title,
+            data[0].imgURL,
+            data[0].description,
+            data[0].subtitle,
+            data[0].createdAt
         ),
         new Picture(
             id++,
-            initialData.initialData[1].credit,
-            initialData.initialData[1].price,
-            initialData.initialData[1].title,
-            initialData.initialData[1].imgURL,
-            initialData.initialData[1].description,
-            initialData.initialData[1].subtitle,
-            initialData.initialData[1].createdAt
+            data[1].credit,
+            data[1].price,
+            data[1].title,
+            data[1].imgURL,
+            data[1].description,
+            data[1].subtitle,
+            data[1].createdAt
         ),
         new Picture(
             id++,
-            initialData.initialData[2].credit,
-            initialData.initialData[2].price,
-            initialData.initialData[2].title,
-            initialData.initialData[2].imgURL,
-            initialData.initialData[2].description,
-            initialData.initialData[2].subtitle,
-            initialData.initialData[2].createdAt
+            data[2].credit,
+            data[2].price,
+            data[2].title,
+            data[2].imgURL,
+            data[2].description,
+            data[2].subtitle,
+            data[2].createdAt
         ),
         new Picture(
             id++,
-            initialData.initialData[3].credit,
-            initialData.initialData[3].price,
-            initialData.initialData[3].title,
-            initialData.initialData[3].imgURL,
-            initialData.initialData[3].description,
-            initialData.initialData[3].subtitle,
-            initialData.initialData[3].createdAt
+            data[3].credit,
+            data[3].price,
+            data[3].title,
+            data[3].imgURL,
+            data[3].description,
+            data[3].subtitle,
+            data[3].createdAt
         ),
         new Picture(
             id++,
-            initialData.initialData[4].credit,
-            initialData.initialData[4].price,
-            initialData.initialData[4].title,
-            initialData.initialData[4].imgURL,
-            initialData.initialData[4].description,
-            initialData.initialData[4].subtitle,
-            initialData.initialData[4].createdAt
+            data[4].credit,
+            data[4].price,
+            data[4].title,
+            data[4].imgURL,
+            data[4].description,
+            data[4].subtitle,
+            data[4].createdAt
         ),
         new Picture(
             id++,
-            initialData.initialData[5].credit,
-            initialData.initialData[5].price,
-            initialData.initialData[5].title,
-            initialData.initialData[5].imgURL,
-            initialData.initialData[5].description,
-            initialData.initialData[5].subtitle,
-            initialData.initialData[5].createdAt
+            data[5].credit,
+            data[5].price,
+            data[5].title,
+            data[5].imgURL,
+            data[5].description,
+            data[5].subtitle,
+            data[5].createdAt
         ),
     ];
     return picturesArr;
