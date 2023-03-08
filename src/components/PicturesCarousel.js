@@ -8,7 +8,14 @@ let imgCreditToShow;
 let imgCreditToHide;
 let animationStarted;
 
-window.addEventListener("load", () => {
+const initialPicturesCarousel = (picturesArrFromHomePage) => {
+  carouselDiv = document.getElementById("home-page-pictures-carousel");
+  caouselDivCredit = document.getElementById("imgCredit");
+  initializeBtns();
+  updateCarousel(picturesArrFromHomePage);
+  if (!picturesArr) {
+    return;
+  }
   setInterval(() => {
     if (animationStarted) {
       return;
@@ -33,14 +40,7 @@ window.addEventListener("load", () => {
     imgToShow.classList.remove("opacity-0");
     imgToShow.addEventListener("animationend", showImg, { once: true });
     showIndx = nextIndx;
-  }, 3000)
-});
-
-const initialPicturesCarousel = (picturesArrFromHomePage) => {
-  carouselDiv = document.getElementById("home-page-pictures-carousel");
-  caouselDivCredit = document.getElementById("imgCredit");
-  initializeBtns();
-  updateCarousel(picturesArrFromHomePage);
+  }, 3000);
 };
 
 const updateCarousel = (picturesArrFromHomePage) => {
@@ -117,6 +117,9 @@ const createItemCredit = (credit) => {
 const createCarousel = () => {
   let innerHTML = "";
   let innerHTMLCredit = "";
+  if (!picturesArr) {
+    return;
+  }
   for (let picture of picturesArr) {
     innerHTML += createItem(picture.title, picture.imgURL, picture.credit);
     innerHTMLCredit += createItemCredit(picture.credit);

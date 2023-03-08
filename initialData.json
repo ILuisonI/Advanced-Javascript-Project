@@ -1,0 +1,58 @@
+{
+    "initialData": [
+        {
+            "credit": "Jill",
+            "price": 50,
+            "title": "Life",
+            "imgURL": "https://images.pexels.com/photos/39853/woman-girl-freedom-happy-39853.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "description": "Enjoying the sundown at the beach",
+            "subtitle": "Beach Sundown",
+            "createdAt": "Greek"
+        },
+        {
+            "credit": "Craig",
+            "price": 200,
+            "title": "Seasons",
+            "imgURL": "https://images.pexels.com/photos/1563356/pexels-photo-1563356.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "description": "Autumn is just around the corner",
+            "subtitle": "Changing Seasons",
+            "createdAt": "Germany"
+        },
+        {
+            "credit": "Louis",
+            "price": 100,
+            "title": "Blossom",
+            "imgURL": "https://images.pexels.com/photos/2101187/pexels-photo-2101187.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "description": "The start of the flowers blossoming",
+            "subtitle": "Spring Time",
+            "createdAt": "Japan"
+        },
+        {
+            "credit": "Steve",
+            "price": 20,
+            "title": "Abstract",
+            "imgURL": "https://images.pexels.com/photos/1269968/pexels-photo-1269968.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "description": "The magic of colors",
+            "subtitle": "Magical Color",
+            "createdAt": "Istanbul"
+        },
+        {
+            "credit": "Quintine",
+            "price": 50,
+            "title": "Top View",
+            "imgURL": "https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "description": "The city in the eyes of birds",
+            "subtitle": "Skyscrapers",
+            "createdAt": "New York"
+        },
+        {
+            "credit": "Katie",
+            "price": 150,
+            "title": "Recharging Energy",
+            "imgURL": "https://images.pexels.com/photos/1212693/pexels-photo-1212693.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "description": "A maginificent creature replanishing it's energy to continure the journey",
+            "subtitle": "Butterfly",
+            "createdAt": "Switzerland"
+        }
+    ]
+}

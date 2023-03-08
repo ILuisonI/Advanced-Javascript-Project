@@ -1,4 +1,5 @@
 import Picture from "../models/Picture.js"
+import initialData from "/initialData.json" assert {type: "json"}
 
 let id = 1;
 let nextUserId = 1;
@@ -7,63 +8,63 @@ const createData = () => {
     let picturesArr = [
         new Picture(
             id++,
-            "Jill",
-            50,
-            "Life",
-            "https://images.pexels.com/photos/39853/woman-girl-freedom-happy-39853.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "Enjoying the sundown at the beach",
-            "Beach Sundown",
-            "Greek"
+            initialData.initialData[0].credit,
+            initialData.initialData[0].price,
+            initialData.initialData[0].title,
+            initialData.initialData[0].imgURL,
+            initialData.initialData[0].description,
+            initialData.initialData[0].subtitle,
+            initialData.initialData[0].createdAt
         ),
         new Picture(
             id++,
-            "Craig",
-            200,
-            "Seasons",
-            "https://images.pexels.com/photos/1563356/pexels-photo-1563356.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "Autumn is just around the corner",
-            "Changing Seasons",
-            "Germany"
+            initialData.initialData[1].credit,
+            initialData.initialData[1].price,
+            initialData.initialData[1].title,
+            initialData.initialData[1].imgURL,
+            initialData.initialData[1].description,
+            initialData.initialData[1].subtitle,
+            initialData.initialData[1].createdAt
         ),
         new Picture(
             id++,
-            "Louis",
-            100,
-            "Blossom",
-            "https://images.pexels.com/photos/2101187/pexels-photo-2101187.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "The start of the flowers blossoming",
-            "Spring Time",
-            "Japan"
+            initialData.initialData[2].credit,
+            initialData.initialData[2].price,
+            initialData.initialData[2].title,
+            initialData.initialData[2].imgURL,
+            initialData.initialData[2].description,
+            initialData.initialData[2].subtitle,
+            initialData.initialData[2].createdAt
         ),
         new Picture(
             id++,
-            "Steve",
-            20,
-            "Abstract",
-            "https://images.pexels.com/photos/1269968/pexels-photo-1269968.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "The magic of colors",
-            "Magical Color",
-            "Istanbul"
+            initialData.initialData[3].credit,
+            initialData.initialData[3].price,
+            initialData.initialData[3].title,
+            initialData.initialData[3].imgURL,
+            initialData.initialData[3].description,
+            initialData.initialData[3].subtitle,
+            initialData.initialData[3].createdAt
         ),
         new Picture(
             id++,
-            "Quintine",
-            50,
-            "Top View",
-            "https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "The city in the eyes of birds",
-            "Skyscrapers",
-            "New York"
+            initialData.initialData[4].credit,
+            initialData.initialData[4].price,
+            initialData.initialData[4].title,
+            initialData.initialData[4].imgURL,
+            initialData.initialData[4].description,
+            initialData.initialData[4].subtitle,
+            initialData.initialData[4].createdAt
         ),
         new Picture(
             id++,
-            "Katie",
-            150,
-            "Recharging Energy",
-            "https://images.pexels.com/photos/1212693/pexels-photo-1212693.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "A maginificent creature replanishing it's energy to continure the journey",
-            "Butterfly",
-            "Switzerland"
+            initialData.initialData[5].credit,
+            initialData.initialData[5].price,
+            initialData.initialData[5].title,
+            initialData.initialData[5].imgURL,
+            initialData.initialData[5].description,
+            initialData.initialData[5].subtitle,
+            initialData.initialData[5].createdAt
         ),
     ];
     return picturesArr;
