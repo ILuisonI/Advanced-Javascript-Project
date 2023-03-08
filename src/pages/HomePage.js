@@ -40,7 +40,7 @@ const initializeElements = () => {
     gallery = document.getElementById("picturesGallery");
     listGallery = document.getElementById("picturesListGallery");
     carousel = document.getElementById("picturesCarousel");
-    displayNow = gallery;
+    displayNow = carousel;
     display(displayNow);
 };
 
