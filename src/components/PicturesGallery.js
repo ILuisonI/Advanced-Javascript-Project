@@ -108,6 +108,9 @@ const addToCart = (id) => {
     if (!user) {
         return;
     }
+    if (user.cart.find(indx => indx === id)) {
+        return;
+    }
     user.cart = [...user.cart, id];
     localStorage.setItem("users", JSON.stringify(users));
     showToast("Picture Added To Cart");

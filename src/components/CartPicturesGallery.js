@@ -27,8 +27,8 @@ const updateCartGallery = () => {
 };
 
 const createCard = (id, name, credit, price, img) => {
-    const businessBtns = `<button type="button" class="btn btn-warning" id="pictureEditBtn-${id}"><i class="bi bi-pencil-square"></i></button>
-                        <button type="button" class="btn btn-danger" id="pictureDeleteBtn-${id}"><i class="bi bi-trash"></i></button>`;
+    const businessBtns = `<button type="button" class="btn btn-warning" id="pictureCartEditBtn-${id}"><i class="bi bi-pencil-square"></i></button>
+                        <button type="button" class="btn btn-danger" id="pictureCartDeleteBtn-${id}"><i class="bi bi-trash"></i></button>`;
     const removeFromCartBtn = `<button type="button" class="btn btn-danger" id="pictureRemoveFromCartBtn-${id}"><i class="bi bi-cart-x"></i></button>`;
     return `<div div class="col" >
                 <div class="card">
@@ -66,8 +66,8 @@ const createEventListener = (idKeyword, functionHandle) => {
 
 //Creates the HTML of properties gallery
 const createPicturesGallery = () => {
-    clearEventListener("pictureDeleteBtn", handleDeleteBtnClick);
-    clearEventListener("pictureEditBtn", handleEditBtnClick);
+    clearEventListener("pictureCartDeleteBtn", handleDeleteBtnClick);
+    clearEventListener("pictureCartEditBtn", handleEditBtnClick);
     clearEventListener("pictureInfo", handleImgClick);
     clearEventListener("pictureRemoveFromCartBtn", handleRemoveFromCartBtnClick);
     let innerHTML = "";
@@ -99,8 +99,8 @@ const createPicturesGallery = () => {
         return;
     }
     galleryDiv.innerHTML = innerHTML;
-    createEventListener("pictureDeleteBtn", handleDeleteBtnClick);
-    createEventListener("pictureEditBtn", handleEditBtnClick);
+    createEventListener("pictureCartDeleteBtn", handleDeleteBtnClick);
+    createEventListener("pictureCartEditBtn", handleEditBtnClick);
     createEventListener("pictureInfo", handleImgClick);
     createEventListener("pictureRemoveFromCartBtn", handleRemoveFromCartBtnClick);
 };
@@ -108,6 +108,7 @@ const createPicturesGallery = () => {
 //Deletes picture when clicking on delete button
 const handleDeleteBtnClick = (ev) => {
     deletePicture(getIdFromClick(ev));
+    removePictureFromCart(getIdFromClick(ev));
 };
 
 const handleEditBtnClick = (ev) => {
