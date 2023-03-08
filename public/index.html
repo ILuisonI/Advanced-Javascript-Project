@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fernas's Art Gallery</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="toast.css">
+    <link rel="shortcut icon" href="./Assets/Images/Cool Squidward.jpg" type="image/x-icon" alt="Fernas's Art Gallery">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+        </script>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#" id="nav-home-link"><img class="logo"
+                        src="./Assets/Images/Cool Squidward.jpg" alt="Fernas's Art Gallery">A.G.</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto my-2 my-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="nav-aboutus-link">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="nav-add-new-picture-link">Add New Picture</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex responsive-nav-flex" role="search" id="navBeforeLogin">
+                        <a class="nav-link me-3" href="#" id="nav-register-link">Register</a>
+                        <a class="nav-link responsive-mt" href="#" id="nav-login-link">Login</a>
+                    </form>
+                    <form class="d-flex responsive-nav-flex d-none" role="search" id="navAfterLogin">
+                        <a class="nav-link me-3" href="#" id="nav-cart-link">Cart</a>
+                        <a class="nav-link me-3" href="#" id="nav-edit-name-link">Name</a>
+                        <a class="nav-link" href="#" id="nav-logout">Logout</a>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        <div id="toast"></div>
+        <div class="toast-slider"></div>
+
+        <main>
+            <!-- Popup -->
+            <div class=" popup-wrapper d-flex justify-content-center align-items-center d-none" id="editPicturePopup">
+                <div div class="popup-div">
+                    <div class="card">
+                        <img src="" class="card-img-top popup-img" alt="" id="editPicturePopupImg" />
+                        <div class="card-body">
+                            <div class="card-title">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control is-invalid" id="editPicturePopupImgURL"
+                                        placeholder="Image URL" required>
+                                    <label for="editPicturePopupImgURL" class="form-label">Image URL</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control is-invalid" id="editPicturePopupTitle"
+                                        placeholder="Name">
+                                    <label for="editPicturePopupTitle">Title</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control is-invalid" id="editPicturePopupSubtitle"
+                                        placeholder="Name">
+                                    <label for="editPicturePopupSubtitle">Subtitle</label>
+                                </div>
+                            </div>
+                            <div class="card-text">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control is-invalid" placeholder="Credit"
+                                        id="editPicturePopupCredit"></textarea>
+                                    <label for="editPicturePopupDesc">Credit</label>
+                                </div>
+                                <div class="card-text">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control is-invalid" placeholder="Created At"
+                                            id="editPicturePopupCreatedAt"></textarea>
+                                        <label for="editPicturePopupCreatedAt">Created At</label>
+                                    </div>
+                                </div>
+                                <div class="card-text">
+                                    <div class="form-floating">
+                                        <textarea class="form-control is-invalid" placeholder="Description"
+                                            id="editPicturePopupDescription"></textarea>
+                                        <label for="editPicturePopupDescription">Description</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="form-floating mb-3">
+                                    <input type="number" class="form-control is-valid" id="editPicturePopupPrice"
+                                        placeholder="Price">
+                                    <label for="editPicturePopupPrice">Price</label>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="card-body text-center">
+                            <button type="button" class="btn btn-danger" id="editPicturePopupCancelBtn"><i
+                                    class="bi bi-x-circle-fill"></i>
+                                Cancel</button>
+                            <button type="submit" class="btn btn-success" id="editPicturePopupSaveBtn"><i
+                                    class="bi bi-check-circle-fill"></i>
+                                Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Popup -->
+            <div class=" popup-wrapper d-flex justify-content-center align-items-center d-none" id="pictureInfoPopup">
+                <div div class="popup-div">
+                    <div class="card">
+                        <img src="" class="card-img-top popup-img" alt="" id="cardPopupImg" />
+                        <div class="card-body">
+                            <h5 id="cardPopupId" class="card-title"></h5>
+                            <h5 id="cardPopupTitle" class="card-title"></h5>
+                            <h6 id="cardPopupSubtitle" class="card-title"></h6>
+                            <p id="cardPopupDescription" class="card-text">
+                            </p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li id="cardPopupCreatedAt" class="list-group-item"></li>
+                        </ul>
+                        <button type="button" class="btn btn-danger" id="picturePopupCloseBtn"><i
+                                class="bi bi-x-circle-fill"></i>
+                            Close</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Home Page -->
+            <div id="home-page" class="d-block">
+                <div class="container text-center">
+                    <h1>Home Page</h1>
+                    <h6>Welcome to Fernas's Art Gallery</h6>
+                </div>
+
+                <!-- View Buttons -->
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <button type="button" class="btn btn-info" id="galleryBtn">
+                            <i class="bi bi-microsoft"></i>
+                        </button>
+                        <button type="button" class="btn btn-info" id="listGalleryBtn">
+                            <i class="bi bi-card-list"></i>
+                        </button>
+                        <button type="button" class="btn btn-info" id="carouselBtn">
+                            <i class="bi bi-file-earmark-slides"></i>
+                        </button>
+                        <button type="button" class="btn btn-info" id="homeDisplaySortASC">
+                            <i class="bi bi-sort-alpha-down"></i>
+                        </button>
+                        <button type="button" class="btn btn-info" id="homeDisplaySortDESC">
+                            <i class="bi bi-sort-alpha-up"></i>
+                        </button>
+                    </div>
+                    <div>
+                        <form class="align-self-end" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                                id="homeDisplaySearch" />
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Galleries -->
+                <div id="picturesGallery" class="d-block">
+                    <div class="row row-cols-1 row-cols-md-3 g-4" id="home-page-pictures-gallery"></div>
+                </div>
+                <div id="picturesListGallery" class="d-none">
+                    <div id="home-page-pictures-list-gallery"></div>
+                </div>
+                <div class="container carusel d-none" id="picturesCarousel">
+                    <div class="img-container" id="home-page-pictures-carousel"></div>
+                    <div id="imgCredit" class="imgCredit d-none"></div>
+                    <div class="d-flex justify-content-around">
+                        <button type="button" class="btn btn-primary" id="back-carousel-btn">
+                            <i class="bi bi-arrow-left"></i>
+                        </button>
+                        <button type="button" class="btn btn-primary" id="next-carousel-btn">
+                            <i class="bi bi-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Us -->
+            <div id="about-us" class="container text-center d-none">
+                <h1>About Us</h1>
+                <br><br><br>
+                <!-- Cards Gallery -->
+                <div class="row row-cols-1 row-cols-xl-2 row-cols-md-1">
+                    <div class="col">
+                        <img class="aboutUsImg" src="./Assets/Images/Gallery.jpg" alt="Gallery">
+                    </div>
+                    <div class="col align-self-center">
+                        <div class="row">
+                            <h5>
+                                Cards Display
+                            </h5>
+                        </div>
+                        <div class="row">
+                            This is the card display, you can see the picture's title, the name of the photographer and
+                            it's price.
+                            If you click on any picture you can see more information about it.
+                            If you are an admin you can edit the pictures by clicking the yellow edit button or you can
+                            delete them.
+                            If you loged in you can add the pictures to your cart.
+                        </div>
+                    </div>
+                </div>
+                <br><br><br>
+                <!-- List Gallery -->
+                <div class="row row-cols-1 row-cols-xl-2 row-cols-md-1 bg-black">
+                    <div class="col">
+                        <img class="aboutUsImg" src="./Assets/Images/List Gallery.jpg" alt="List Gallery">
+                    </div>
+                    <div class="col align-self-center">
+                        <div class="row">
+                            <h5 class="text-white">
+                                List Display
+                            </h5>
+                        </div>
+                        <div class="row text-white">
+                            This is the list display, you can see the picture's URL, the title and the name of the
+                            photographer.
+                            If you click on any picture you can see more information about it.
+                            If you are an admin you can edit the pictures by clicking on the edit button or you can
+                            delete them.
+                            If you loged in you can add the pictures to your cart.
+                        </div>
+                    </div>
+                </div>
+                <br><br><br>
+                <!-- List Gallery -->
+                <div class="row row-cols-1 row-cols-xl-2 row-cols-md-1">
+                    <div class="col">
+                        <img class="aboutUsImg" src="./Assets/Images/Carousel.jpg" alt="Carousel">
+                    </div>
+                    <div class="col align-self-center">
+                        <div class="row">
+                            <h5>
+                                Carousel Display
+                            </h5>
+                        </div>
+                        <div class="row">
+                            This is the carousel display, you can see the pictures URL and the name of the
+                            photographer.<br>
+                            The carousel changes the picture every 3 seconds.<br>
+                            If you click on the right arrow you will go to the next picture and if you click on the left
+                            arrow you will go back to the previous picture.<br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Register Page -->
+            <div id="register-page" class="d-none">
+                <h1>Register</h1>
+                <form onsubmit="event.preventDefault()">
+                    <div class="form-floating mb-3">
+                        <div class="row">
+                            <b>Name</b>
+                        </div>
+                        <div class="row g-3">
+                            <div class="form-floating col-auto">
+                                <input type="text" class="form-control is-invalid" id="register-input-name"
+                                    placeholder="First Name">
+                                <label for="register-input-name">First Name</label>
+                            </div>
+                            <div class="form-floating col-auto">
+                                <input type="text" class="form-control is-invalid" id="register-input-lastname"
+                                    placeholder="Last Name">
+                                <label for="register-input-lastname">Last Name</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <div class="row gap-5">
+                            <div class="col-auto alert alert-danger d-none" role="alert" id="register-alert-name">
+                                Name Rules
+                            </div>
+                            <div class="col-auto alert alert-danger d-none" role="alert" id="register-alert-lastname">
+                                Last Name Rules
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <div class="row">
+                            <b>Address</b>
+                        </div>
+                        <div class="row g-3">
+                            <div class="form-floating col-auto">
+                                <input type="text" class="form-control" id="register-input-state" placeholder="State">
+                                <label for="register-input-state">State</label>
+                            </div>
+                            <div class="form-floating col-auto">
+                                <input type="text" class="form-control" id="register-input-country"
+                                    placeholder="Country">
+                                <label for="register-input-country">Country</label>
+                            </div>
+                            <div class="form-floating col-auto">
+                                <input type="text" class="form-control" id="register-input-city" placeholder="City">
+                                <label for="register-input-city">City</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <div class="row g-3">
+                            <div class="form-floating col-auto">
+                                <input type="text" class="form-control" id="register-input-street" placeholder="Street">
+                                <label for="register-input-street">Street</label>
+                            </div>
+                            <div class="form-floating col-auto">
+                                <input type="text" class="form-control" id="register-input-house-number"
+                                    placeholder="House Number">
+                                <label for="register-input-house-number">House Number</label>
+                            </div>
+                            <div class="form-floating col-auto">
+                                <input type="text" class="form-control" id="register-input-zip-code"
+                                    placeholder="Zip Code">
+                                <label for="register-input-zip-code">Zip Code</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <div class="row">
+                            <b>Means Of Contact</b>
+                        </div>
+                        <div class="row g-3">
+                            <div class="form-floating col-auto">
+                                <input type="email" class="form-control is-invalid" id="register-input-email"
+                                    placeholder="Email">
+                                <label for="register-input-email">Email</label>
+                            </div>
+                            <div class="form-floating col-auto">
+                                <input type="email" class="form-control" id="register-input-phone"
+                                    placeholder="Phone Number">
+                                <label for="register-input-phone">Phone Number</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <div class="row g-3">
+                            <div class="alert alert-danger col-auto d-none" role="alert" id="register-alert-email">
+                                Email Rules
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <div class="row">
+                            <b>Security</b>
+                        </div>
+                        <div class="row g-3">
+                            <div class="form-floating col-auto">
+                                <input type="password" class="form-control is-invalid" id="register-input-password"
+                                    placeholder="password">
+                                <label for="register-input-password">Password</label>
+                            </div>
+                            <div class="form-floating col-auto">
+                                <input type="password" class="form-control is-invalid"
+                                    id="register-input-confirm-password" placeholder="Confirm Password">
+                                <label for="register-input-confirm-password">Confirm Password</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <div class="row gap-3">
+                            <div class="alert alert-danger col-auto d-none" role="alert" id="register-alert-password">
+                                Password Rules
+                            </div>
+                            <div class="alert alert-danger col-auto d-none" role="alert"
+                                id="register-alert-confirm-password">
+                                Password And Confirm Password Do Not Match
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="register-check-business">
+                            <label class="form-check-label" for="register-check-business">Business Client</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button class="btn btn-primary" disabled="true" id="register-btn">Register</button>
+                    </div>
+                    <div class="row">
+                        <button class="btn btn-danger" id="cancel-btn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Login Page -->
+            <div id="login-page" class="d-none">
+                <h1>Login</h1>
+                <form onsubmit="event.preventDefault()">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="login-input-email" placeholder="email">
+                        <label for="login-input-email">Email Address</label>
+                    </div>
+                    <div class="alert alert-danger d-none" role="alert" id="login-alert-email">
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="login-input-password" placeholder="password">
+                        <label for=" login-input-password">Password</label>
+                    </div>
+                    <div class="alert alert-danger d-none" role="alert" id="login-alert">
+                        Email and/or Password are incorrect!
+                    </div>
+                    <a href="#" id="nav-registerlogin-link">Register Here</a><br><br>
+                    <button class="btn btn-primary" disabled="true" id="login-btn">Login</button>
+                </form>
+            </div>
+
+            <!-- Profile Page -->
+            <div id="profile-page" class="d-none">
+                <h1>Profile Page</h1>
+                <form onsubmit="event.preventDefault()">
+                    <div class="form-floating mb-3">
+                        <div class="row">
+                            <b>Name</b>
+                        </div>
+                        <div class="row g-3">
+                            <div class="form-floating col-auto">
+                                <input type="text" class="form-control is-invalid" id="profile-input-name"
+                                    placeholder="First Name">
+                                <label for="registprofileer-input-name">First Name</label>
+                            </div>
+                            <div class="form-floating col-auto">
+                                <input type="text" class="form-control is-invalid" id="profile-input-lastname"
+                                    placeholder="Last Name">
+                                <label for="profile-input-lastname">Last Name</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <div class="row gap-5">
+                            <div class="col-auto alert alert-danger d-none" role="alert" id="profile-alert-name">
+                                Name Rules
+                            </div>
+                            <div class="col-auto alert alert-danger d-none" role="alert" id="profile-alert-lastname">
+                                Last Name Rules
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <div class="row">
+                            <b>Address</b>
+                        </div>
+                        <div class="row g-3">
+                            <div class="form-floating col-auto">
+                                <input type="text" class="form-control" id="profile-input-state" placeholder="State">
+                                <label for="profile-input-state">State</label>
+                            </div>
+                            <div class="form-floating col-auto">
+                                <input type="text" class="form-control" id="profile-input-country"
+                                    placeholder="Country">
+                                <label for="profile-input-country">Country</label>
+                            </div>
+                            <div class="form-floating col-auto">
+                                <input type="text" class="form-control" id="profile-input-city" placeholder="City">
+                                <label for="profile-input-city">City</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <div class="row g-3">
+                            <div class="form-floating col-auto">
+                                <input type="text" class="form-control" id="profile-input-street" placeholder="Street">
+                                <label for="profile-input-street">Street</label>
+                            </div>
+                            <div class="form-floating col-auto">
+                                <input type="text" class="form-control" id="profile-input-house-number"
+                                    placeholder="House Number">
+                                <label for="profile-input-house-number">House Number</label>
+                            </div>
+                            <div class="form-floating col-auto">
+                                <input type="text" class="form-control" id="profile-input-zip-code"
+                                    placeholder="Zip Code">
+                                <label for="profile-input-zip-code">Zip Code</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <div class="row">
+                            <b>Means Of Contact</b>
+                        </div>
+                        <div class="row g-3">
+                            <div class="form-floating col-auto">
+                                <input type="email" class="form-control is-invalid" id="profile-input-email"
+                                    placeholder="Email">
+                                <label for="profile-input-email">Email</label>
+                            </div>
+                            <div class="form-floating col-auto">
+                                <input type="email" class="form-control" id="profile-input-phone"
+                                    placeholder="Phone Number">
+                                <label for="profile-input-phone">Phone Number</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <div class="row g-3">
+                            <div class="alert alert-danger col-auto d-none" role="alert" id="profile-alert-email">
+                                Email Rules
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <div class="row">
+                            <b>Security</b>
+                        </div>
+                        <div class="row g-3">
+                            <div class="form-floating col-auto">
+                                <input type="password" class="form-control is-invalid" id="profile-input-password"
+                                    placeholder="password">
+                                <label for="profile-input-password">Password</label>
+                            </div>
+                            <div class="form-floating col-auto">
+                                <input type="password" class="form-control is-invalid"
+                                    id="profile-input-confirm-password" placeholder="Confirm Password">
+                                <label for="profile-input-confirm-password">Confirm Password</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <div class="row gap-3">
+                            <div class="alert alert-danger col-auto d-none" role="alert" id="profile-alert-password">
+                                Password Rules
+                            </div>
+                            <div class="alert alert-danger col-auto d-none" role="alert"
+                                id="profile-alert-confirm-password">
+                                Password And Confirm Password Do Not Match
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="profile-check-business">
+                            <label class="form-check-label" for="profile-check-business">Business Client</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button class="btn btn-primary" disabled="true" id="update-btn">Update</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Cart -->
+            <div id="cart-page" class="container text-center d-none">
+                <h1>Cart</h1>
+                <h6 id="emptyCart">Your cart is empty.</h6>
+                <div id="cartPicturesGallery">
+                    <div class="row row-cols-1 row-cols-md-3 g-4" id="cart-pictures-gallery"></div>
+                </div>
+            </div>
+    </div>
+    <div id="page-not-found-link" class="d-none">
+        Error 404: Page Not Found
+    </div>
+    </main>
+    <footer class="border-top pt-3 d-flex justify-content-center">
+        Created By Fernas Baransy 2023©️
+    </footer>
+    </div>
+
+    <script src="../src/app.js" type="module"></script>
+</body>
+
+</html>
