@@ -1,5 +1,5 @@
 In this project I used:
-Javascript, CSS, Classes, Bootstrap.
+HTML, Javascript, CSS, Classes, Bootstrap.
 
 For this website to work you need live server.
 
