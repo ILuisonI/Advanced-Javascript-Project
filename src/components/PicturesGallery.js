@@ -8,6 +8,7 @@ let deletePicture;
 let showPopup;
 let showInfoPopup;
 let isConnected;
+let users;
 
 const initialPicturesGallery = (picturesArrFromHomePage, isBusinessParam, deletePictureFromHomePage, showPopupFromHomePage, checkIfConnected, showInfoPopupFromHomePage) => {
     galleryDiv = document.getElementById("home-page-pictures-gallery");
@@ -103,14 +104,7 @@ const handleAddToCart = (ev) => {
 
 const addToCart = (id) => {
     id = +id;
-    let users = localStorage.getItem("users");
-    let token = localStorage.getItem("token");
-    if (!token) {
-        return;
-    }
-    users = JSON.parse(users);
-    token = JSON.parse(token);
-    let user = users.find((item) => item.id === token.id);
+    let user = getUserInfo();
     if (!user) {
         return;
     }
@@ -118,6 +112,17 @@ const addToCart = (id) => {
     localStorage.setItem("users", JSON.stringify(users));
     showToast("Picture Added To Cart");
     updateCartGallery();
+};
+
+const getUserInfo = () => {
+    users = localStorage.getItem("users");
+    let token = localStorage.getItem("token");
+    if (!token) {
+        return;
+    }
+    users = JSON.parse(users);
+    token = JSON.parse(token);
+    return users.find((item) => item.id === token.id);
 };
 
 const getIdFromClick = (ev) => {

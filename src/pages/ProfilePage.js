@@ -179,7 +179,8 @@ btnUpdate.addEventListener("click", () => {
             localStorage.setItem("users", JSON.stringify(users));
             localStorage.setItem("token", JSON.stringify(token));
             showToast("Profile Updated Successfully!");
+            showToast("Moving To Homepage In 3 Seconds");
         }
     }
-    location.reload();
+    setTimeout(() => { window.location.reload() }, 3000);
 });

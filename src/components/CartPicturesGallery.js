@@ -5,6 +5,7 @@ let deletePicture;
 let showPopup;
 let showInfoPopup;
 let isConnected;
+let users;
 
 const initialCartPicturesGallery = (isBusinessParam, deletePictureFromHomePage, showPopupFromHomePage, checkIfConnected, showInfoPopupFromHomePage) => {
     galleryDiv = document.getElementById("cart-pictures-gallery");
@@ -71,14 +72,7 @@ const createPicturesGallery = () => {
     clearEventListener("pictureRemoveFromCartBtn", handleRemoveFromCartBtnClick);
     let innerHTML = "";
     let pictureId;
-    let users = localStorage.getItem("users");
-    let token = localStorage.getItem("token");
-    if (!token) {
-        return;
-    }
-    users = JSON.parse(users);
-    token = JSON.parse(token);
-    let user = users.find((item) => item.id === token.id);
+    let user = getUserInfo();
     let emptyCart = document.getElementById("emptyCart");
     let cart = document.getElementById("cartPicturesGallery");
     if (!user || user.cart.length === 0) {
@@ -126,20 +120,24 @@ const handleRemoveFromCartBtnClick = (ev) => {
 
 const removePictureFromCart = (pictureId) => {
     pictureId = +pictureId;
-    let users = localStorage.getItem("users");
-    let token = localStorage.getItem("token");
-    if (!token) {
-        return;
-    }
-    users = JSON.parse(users);
-    token = JSON.parse(token);
-    let user = users.find((item) => item.id === token.id);
+    let user = getUserInfo();
     if (user) {
         user.cart = user.cart.filter(
             (item) => item !== pictureId);
     }
     localStorage.setItem("users", JSON.stringify(users));
     updateCartGallery();
+};
+
+const getUserInfo = () => {
+    users = localStorage.getItem("users");
+    let token = localStorage.getItem("token");
+    if (!token) {
+        return;
+    }
+    users = JSON.parse(users);
+    token = JSON.parse(token);
+    return users.find((item) => item.id === token.id);
 };
 
 const handleImgClick = (ev) => {

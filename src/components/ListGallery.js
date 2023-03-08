@@ -1,3 +1,6 @@
+import { updateCartGallery } from "./CartPicturesGallery.js";
+import showToast from "../services/Toast.js"
+
 let picturesArr;
 let galleryListDiv;
 let isBusiness;
@@ -5,6 +8,7 @@ let deletePicture;
 let showPopup;
 let showInfoPopup;
 let isConnected;
+let users;
 
 const initialPicturesListGallery = (picturesArrFromHomePage, isBusinessParam, deletePictureFromHomePage, showPopupFromHomePage, checkIfConnected, showInfoPopupFromHomePage) => {
     galleryListDiv = document.getElementById("home-page-pictures-list-gallery");
@@ -24,7 +28,7 @@ const updateListGallery = (picturesArrFromHomePage) => {
 const createItem = (id, number, credit, title, img) => {
     const businessBtns = `<td><button type="button" class="btn" id="pictureListEditBtn-${id}"><i class="bi bi-pencil-square"></i></button></td>
                         <td><button type="button" class="btn" id="pictureListDeleteBtn-${id}"><i class="bi bi-trash"></i></button></td>`;
-    const connectedBtns = `<td><button type="button" class="btn" id="pictureListCartBtn-${id}"><i class="bi bi-cart-plus"></i></button></td>`;
+    const connectedBtns = `<td><button type="button" class="btn" id="pictureListAddToCartBtn-${id}"><i class="bi bi-cart-plus"></i></button></td>`;
     return `
     <tr>
         <th scope="row">${number}</th>
@@ -55,6 +59,7 @@ const createPropertiesList = () => {
     clearEventListener("pictureListDeleteBtn", handleDeleteBtnClick);
     clearEventListener("pictureListEditBtn", handleEditBtnClick);
     clearEventListener("pictureListInfo", handleImgClick);
+    clearEventListener("pictureListAddToCartBtn", handleAddToCart);
     let innerHTML = "";
     innerHTML += `<table class="table">
         <thead>
@@ -85,6 +90,7 @@ const createPropertiesList = () => {
     createEventListener("pictureListDeleteBtn", handleDeleteBtnClick);
     createEventListener("pictureListEditBtn", handleEditBtnClick);
     createEventListener("pictureListInfo", handleImgClick);
+    createEventListener("pictureListAddToCartBtn", handleAddToCart);
 };
 
 //Deletes picture when clicking on delete button
@@ -98,6 +104,33 @@ const handleEditBtnClick = (ev) => {
 
 const handleImgClick = (ev) => {
     showInfoPopup(getIdFromClick(ev));
+};
+
+const handleAddToCart = (ev) => {
+    addToCart(getIdFromClick(ev));
+};
+
+const addToCart = (id) => {
+    id = +id;
+    let user = getUserInfo();
+    if (!user) {
+        return;
+    }
+    user.cart = [...user.cart, id];
+    localStorage.setItem("users", JSON.stringify(users));
+    showToast("Picture Added To Cart");
+    updateCartGallery();
+};
+
+const getUserInfo = () => {
+    users = localStorage.getItem("users");
+    let token = localStorage.getItem("token");
+    if (!token) {
+        return;
+    }
+    users = JSON.parse(users);
+    token = JSON.parse(token);
+    return users.find((item) => item.id === token.id);
 };
 
 const getIdFromClick = (ev) => {
